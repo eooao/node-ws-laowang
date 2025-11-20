@@ -1,146 +1,253 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>滕王阁序</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: url('https://img.yust.eu.org/file/test/1749861352890_photo_2025-05-10_08-09-57.jpg') center/cover no-repeat fixed;
-            font-family: "KaiTi", "楷体", serif;
-            overflow: hidden;
-            backdrop-filter: blur(6px);
-        }
-        .time-bar {
-            text-align: center;
-            padding: 12px 0;
-            font-size: 1.2rem;
-            font-weight: bold;
-            background: rgba(255,255,255,0.8);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-        .container {
-            margin-top: 80px;
-            height: calc(100vh - 80px);
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            box-sizing: border-box;
-        }
-        .content-box {
-            max-width: 800px;
-            background: rgba(255,255,255,0.75);
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-            text-align: center;
-            animation: fadeIn 1.5s ease;
-        }
-        h1 {
-            margin-bottom: 20px;
-            font-size: 2rem;
-            letter-spacing: 3px;
-        }
-        .poem {
-            font-size: 1.2rem;
-            line-height: 2.1em;
-            white-space: pre-wrap;
-            opacity: 0;
-            animation: fadeText 3s forwards;
-            animation-delay: .8s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeText {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 1.6rem; }
-            .poem { font-size: 1rem; }
-            .content-box { padding: 20px; }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="关于环境保护的静态宣传页面：理念、行动与资源。" />
+  <title>守护地球 — 环境保护</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; /* near-black */
+      --card:#0b1220;
+      --accent:#16a34a; /* green */
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:16px;
+      --maxw:1100px;
+      --ff: 'Noto Sans SC', system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--ff);
+      background: linear-gradient(180deg, #071022 0%, #071a10 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+
+    .wrap{max-width:var(--maxw);margin:36px auto;padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;margin-bottom:22px;backdrop-filter: blur(6px);}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .mark{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#34d399);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(22,163,74,0.18)}
+    .logo .mark svg{width:28px;height:28px}
+    h1{font-size:20px;margin:0}
+    header nav{display:flex;gap:12px;align-items:center}
+    header nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px}
+    header nav a:hover{color:#fff;background:var(--glass)}
+
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center}
+    @media (max-width:880px){.hero{grid-template-columns:1fr}header{flex-direction:column;gap:12px}.wrap{margin:12px;padding:16px}}
+
+    .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:22px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+
+    .hero-left h2{font-size:34px;margin:6px 0 8px}
+    .lead{color:var(--muted);margin-bottom:14px}
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:700;text-decoration:none}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#34d399);color:#01210b}
+    .btn-outline{border:1px solid rgba(255,255,255,0.06);color:var(--muted);}
+
+    .stats{display:flex;gap:12px;margin-top:16px}
+    .stat{flex:1;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);text-align:center}
+    .stat h3{margin:0;font-size:20px}
+    .stat p{margin:6px 0 0;color:var(--muted)}
+
+    .right-visual{display:flex;flex-direction:column;gap:12px}
+    .visual-card{height:180px;border-radius:12px;overflow:hidden;position:relative}
+    .visual-card .bg{position:absolute;inset:0;background-image:linear-gradient(135deg, rgba(22,163,74,0.12), rgba(6,78,59,0.06));display:flex;align-items:center;justify-content:center}
+    .visual-card img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(8%) saturate(110%);opacity:0.95}
+
+    main{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-top:18px}
+    @media (max-width:1100px){main{grid-template-columns:1fr}}
+
+    .section{margin-bottom:18px}
+    .tips{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:780px){.tips{grid-template-columns:repeat(1,1fr)}}
+    .tip{padding:14px;border-radius:12px;background:var(--glass-2)}
+    .tip h4{margin:0 0 6px}
+
+    .resources ul{list-style:none;padding:0;margin:0}
+    .resources li{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.03);color:var(--muted)}
+
+    footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* small animations */
+    .pulse{animation:pulse 3s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+
+    .fade-up{opacity:0;transform:translateY(10px);animation:fadeUp 0.8s forwards}
+    .delay-1{animation-delay:0.12s}
+    .delay-2{animation-delay:0.24s}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* accessibility focus */
+    a:focus{outline:3px solid rgba(52,211,153,0.18);outline-offset:3px}
+  </style>
 </head>
 <body>
-    <div class="time-bar" id="clock"></div>
-
-    <div class="container">
-        <div class="content-box">
-            <h1>滕王阁序</h1>
-            <div class="poem">
-豫章故郡，洪都新府。星分翼轸，地接衡庐。
-襟三江而带五湖，控蛮荆而引瓯越。
-物华天宝，龙光射牛斗之墟；人杰地灵，徐孺下陈蕃之榻。
-雄州雾列，俊采星驰。台隍枕夷夏之交，宾主尽东南之美。
-都督阎公之雅望，棨戟遥临；宇文新州之懿范，襜帷暂驻。
-十旬休假，胜友如云；千里逢迎，高朋满座。
-腾蛟起凤，孟学士之词宗；紫电青霜，王将军之武库。
-家君作宰，路出名区；童子何知，躬逢胜饯。
-
-时维九月，序属三秋。潦水尽而寒潭清，烟光凝而暮山紫。
-俨骖騑于上路，访风景于崇阿；临帝子之长洲，得仙人之旧馆。
-层峦耸翠，上出重霄；飞阁流丹，下临无地。
-鹤汀凫渚，穷岛屿之萦回；桂殿兰宫，即冈峦之体势。
-披绣闼，俯雕甍，山原旷其盈视；川泽纡其骇瞩。
-闾阎扑地，钟鸣鼎食之家；舸舰弥津，青雀黄龙之舳。
-云销雨霁，彩彻区明。落霞与孤鹜齐飞，秋水共长天一色。
-渔舟唱晚，响穷彭蠡之滨；雁阵惊寒，声断衡阳之浦。
-
-遥襟甫畅，逸兴遄飞。爽籁发而清风生，纤歌凝而白云遏。
-睢园绿竹，气凌彭泽之樽；邺水朱华，光照临川之笔。
-四美具，二难并。穷睇眄于中天，极娱游于暇日。
-天高地迥，觉宇宙之无穷；兴尽悲来，识盈虚之有数。
-望长安于日下，指吴会于云间。
-地势极而南溟深，天柱高而北辰远。
-关山难越，谁悲失路之人；萍水相逢，尽是他乡之客。
-怀帝阍而不见，奉宣室以何年。
-
-嗟乎！时运不齐，命途多舛。冯唐易老，李广难封。
-屈贾谊于长沙，非无圣主；窜梁鸿于海曲，岂乏明时。
-所赖君子见机，达人知命。老当益壮，宁移白首之心；穷且益坚，不坠青云之志。
-酌贪泉而觉爽，处涸辙以犹欢。
-北海虽赊，扶摇可接；东隅已逝，桑榆非晚。
-孟尝高洁，空余报国之情；阮籍猖狂，岂效穷途之哭！
-
-勃，三尺微命，一介书生。无路请缨，等终军之弱冠；有怀投笔，慕宗悫之长风。
-舍簪笏于百龄，奉晨昏于万里。
-非谢家之宝树，接孟氏之芳邻。
-他日趋庭，叨陪鲤对；今兹捧袂，喜托龙门。
-杨意不逢，抚凌云而自惜；钟期既遇，奏流水以何惭。
-
-览物之情，得无异乎？
-若夫霪雨霏霏，连月不开；阴风怒号，浊浪排空。
-日星隐曜，山岳潜形；商旅不行，樯倾楫摧。
-薄霄雾集，景物惨淡；长烟一空，皓月千里。
-浮光跃金，静影沉璧；渔歌互答，此乐何极！
-
-登斯楼也，则有去国怀乡，忧谗畏讥。
-满目萧然，感极而悲者矣。
-至若春和景明，波澜不惊；上下一白，浑然天成。
-风和日暖，羽翔鱼跃；舟楫所至，皆为乐土。
-长风破浪会有时，直挂云帆济沧海。
-            </div>
+  <div class="wrap">
+    <header class="card">
+      <div class="logo">
+        <div class="mark pulse" aria-hidden="true">
+          <!-- simple leaf icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 20c5-1 8-6 9-11 1 0 5 6 5 11-5 0-9 0-14 0z" fill="white" opacity="0.95"/></svg>
         </div>
-    </div>
+        <div>
+          <h1>守护地球 • 环境保护</h1>
+          <div style="color:var(--muted);font-size:12px">小行动，大改变 — 从今天开始</div>
+        </div>
+      </div>
 
-    <script>
-        function updateClock() {
-            const now = new Date();
-            document.getElementById("clock").innerText = now.toLocaleString();
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-    </script>
+      <nav>
+        <a href="#about">关于</a>
+        <a href="#tips">行动指南</a>
+        <a href="#resources">资源</a>
+        <a href="#contact" class="btn btn-outline">联系我们</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card hero-left fade-up delay-1">
+        <h2>为未来留一片绿 — 环境保护从每个人做起</h2>
+        <p class="lead">气候变化、污染和生物多样性丧失正在影响我们的生活。通过可持续的生活方式、社区行动和教育，我们可以减缓破坏、修复生态并创造更健康的地球。</p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#tips">立即采取行动</a>
+          <a class="btn btn-outline" href="#resources">学习更多</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <h3>低碳生活</h3>
+            <p>减少个人碳排放，选择公共交通与低碳出行。</p>
+          </div>
+          <div class="stat">
+            <h3>零废弃</h3>
+            <p>减少一次性用品，实践垃圾分类与回收。</p>
+          </div>
+          <div class="stat">
+            <h3>植树造林</h3>
+            <p>参与植树与生态修复，恢复生物栖息地。</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="right-visual">
+        <div class="card visual-card fade-up delay-2" style="height:240px;">
+          <div class="bg" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="绿色森林和阳光"/>
+          </div>
+        </div>
+
+        <div class="card visual-card">
+          <div style="padding:12px">
+            <h4 style="margin:0 0 6px">加入本地行动</h4>
+            <p class="lead" style="margin:0;color:var(--muted);font-size:14px">从小区清洁、海滩捡垃圾到支持环保组织，每一步都重要。</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <section id="about" class="card section fade-up">
+        <h3>关于环境保护</h3>
+        <p class="lead">环境保护意指保护自然环境及其生态系统的完整性，减少污染、节约资源并促进人与自然的和谐共生。它涵盖：大气、水体、土壤、物种与生态系统修复、可持续能源等多个领域。</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div>
+            <h4>为什么重要？</h4>
+            <ul>
+              <li>保障人类的健康与食品安全；</li>
+              <li>维护生态服务（如授粉、净化空气与水）；</li>
+              <li>保护气候系统与生物多样性。</li>
+            </ul>
+          </div>
+          <div>
+            <h4>我们面临的挑战</h4>
+            <ul>
+              <li>温室气体排放与全球变暖；</li>
+              <li>塑料与化学污染；</li>
+              <li>森林砍伐与栖息地破坏。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card resources fade-up">
+        <h4>资源与链接</h4>
+        <ul>
+          <li>生态保护组织与志愿者平台</li>
+          <li>本地回收与垃圾分类指南</li>
+          <li>可持续生活的入门课程与手册</li>
+          <li>碳足迹计算工具</li>
+        </ul>
+
+        <h4 style="margin-top:12px">联系我们</h4>
+        <p style="color:var(--muted);font-size:13px">邮箱：hello@example.org<br/>社交：@earth_guard</p>
+      </aside>
+
+      <section id="tips" class="card section fade-up">
+        <h3>行动指南 — 简单可行的日常改变</h3>
+        <div class="tips" style="margin-top:12px">
+          <div class="tip">
+            <h4>减少一次性用品</h4>
+            <p>携带随身水杯、购物袋与餐具，减少塑料垃圾。</p>
+          </div>
+          <div class="tip">
+            <h4>节能减排</h4>
+            <p>使用节能灯、节约用电，并优先选择公共交通或骑行。</p>
+          </div>
+          <div class="tip">
+            <h4>负责任的饮食</h4>
+            <p>减少食物浪费，适当选择植物性饮食以减轻碳足迹。</p>
+          </div>
+          <div class="tip">
+            <h4>支持修复生态</h4>
+            <p>参与或捐助植树、湿地恢复与自然保护项目。</p>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+          <a class="btn btn-primary" href="#contact">成为志愿者</a>
+          <a class="btn btn-outline" href="#resources">下载指南（PDF）</a>
+        </div>
+      </section>
+
+      <section id="contact" class="card section fade-up">
+        <h3>加入我们</h3>
+        <p class="lead">想要组织活动或与我们合作？给我们发邮件或在社交媒体上联系。</p>
+        <form onsubmit="event.preventDefault(); alert('感谢你的关注！请把表单信息代替为实际提交逻辑。');" style="display:grid;gap:8px;margin-top:12px">
+          <input aria-label="姓名" placeholder="姓名" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+          <input aria-label="邮箱" placeholder="邮箱" type="email" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+          <textarea aria-label="留言" placeholder="你可以简单描述想参与的活动或问题" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;min-height:100px"></textarea>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-primary" type="submit">发送</button>
+            <button class="btn btn-outline" type="reset">清除</button>
+          </div>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> 守护地球 • 环境保护 — 小行动，大改变</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Simple progressive reveal for sections when they enter viewport
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('fade-up'); })
+    },{threshold:0.09});
+    document.querySelectorAll('.card').forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>
