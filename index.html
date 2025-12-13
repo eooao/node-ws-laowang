@@ -1,253 +1,747 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="关于环境保护的静态宣传页面：理念、行动与资源。" />
-  <title>守护地球 — 环境保护</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f1724; /* near-black */
-      --card:#0b1220;
-      --accent:#16a34a; /* green */
-      --muted:#94a3b8;
-      --glass: rgba(255,255,255,0.04);
-      --glass-2: rgba(255,255,255,0.02);
-      --radius:16px;
-      --maxw:1100px;
-      --ff: 'Noto Sans SC', system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:var(--ff);
-      background: linear-gradient(180deg, #071022 0%, #071a10 60%);
-      color:#e6eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Space - Architecture & Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
 
-    .wrap{max-width:var(--maxw);margin:36px auto;padding:24px}
+        :root {
+            /* Changed from Green to Modern Architectural Palette (Black/Gold/Grey) */
+            --primary: #1a1a1a;
+            --secondary: #333333;
+            --accent: #c9a227; /* Muted Gold */
+            --light: #f4f4f4;
+            --dark: #000000;
+            --text: #4a4a4a;
+            --white: #ffffff;
+        }
 
-    header{display:flex;align-items:center;justify-content:space-between;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;margin-bottom:22px;backdrop-filter: blur(6px);}
-    .logo{display:flex;gap:12px;align-items:center}
-    .logo .mark{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#34d399);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(22,163,74,0.18)}
-    .logo .mark svg{width:28px;height:28px}
-    h1{font-size:20px;margin:0}
-    header nav{display:flex;gap:12px;align-items:center}
-    header nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px}
-    header nav a:hover{color:#fff;background:var(--glass)}
+        body {
+            background-color: var(--white);
+            color: var(--text);
+            line-height: 1.7;
+        }
 
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center}
-    @media (max-width:880px){.hero{grid-template-columns:1fr}header{flex-direction:column;gap:12px}.wrap{margin:12px;padding:16px}}
+        header {
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
 
-    .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:22px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .hero-left h2{font-size:34px;margin:6px 0 8px}
-    .lead{color:var(--muted);margin-bottom:14px}
-    .cta-row{display:flex;gap:12px;align-items:center}
-    .btn{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:700;text-decoration:none}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),#34d399);color:#01210b}
-    .btn-outline{border:1px solid rgba(255,255,255,0.06);color:var(--muted);}
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .stats{display:flex;gap:12px;margin-top:16px}
-    .stat{flex:1;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);text-align:center}
-    .stat h3{margin:0;font-size:20px}
-    .stat p{margin:6px 0 0;color:var(--muted)}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--dark);
+            text-transform: uppercase;
+        }
 
-    .right-visual{display:flex;flex-direction:column;gap:12px}
-    .visual-card{height:180px;border-radius:12px;overflow:hidden;position:relative}
-    .visual-card .bg{position:absolute;inset:0;background-image:linear-gradient(135deg, rgba(22,163,74,0.12), rgba(6,78,59,0.06));display:flex;align-items:center;justify-content:center}
-    .visual-card img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(8%) saturate(110%);opacity:0.95}
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
 
-    main{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-top:18px}
-    @media (max-width:1100px){main{grid-template-columns:1fr}}
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
 
-    .section{margin-bottom:18px}
-    .tips{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    @media (max-width:780px){.tips{grid-template-columns:repeat(1,1fr)}}
-    .tip{padding:14px;border-radius:12px;background:var(--glass-2)}
-    .tip h4{margin:0 0 6px}
+        nav ul li {
+            margin-left: 2.5rem;
+        }
 
-    .resources ul{list-style:none;padding:0;margin:0}
-    .resources li{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.03);color:var(--muted)}
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
 
-    footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px}
+        nav ul li a:hover {
+            color: var(--accent);
+        }
 
-    /* small animations */
-    .pulse{animation:pulse 3s infinite}
-    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
 
-    .fade-up{opacity:0;transform:translateY(10px);animation:fadeUp 0.8s forwards}
-    .delay-1{animation-delay:0.12s}
-    .delay-2{animation-delay:0.24s}
-    @keyframes fadeUp{to{opacity:1;transform:none}}
+        nav ul li a:hover::after {
+            width: 100%;
+        }
 
-    /* accessibility focus */
-    a:focus{outline:3px solid rgba(52,211,153,0.18);outline-offset:3px}
-  </style>
+        .hero {
+            /* Architectural Background Image */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 0; /* Square borders for architectural look */
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .section-title p {
+            color: var(--text);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            font-style: italic;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+        }
+
+        .about-img::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 5px solid var(--accent);
+            z-index: -1;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-weight: 300;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Stats are now darker theme */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+            background-color: var(--primary);
+            padding: 3rem;
+            color: var(--white);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-item:hover {
+            transform: none; /* Removed hop effect for more serious tone */
+        }
+
+        .stat-item i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            color: #aaa;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .initiatives {
+            background-color: var(--light);
+        }
+
+        .initiatives-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .initiative-card {
+            background-color: var(--white);
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .initiative-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .initiative-img {
+            height: 250px; /* Taller images */
+            overflow: hidden;
+        }
+
+        .initiative-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(30%);
+        }
+
+        .initiative-card:hover .initiative-img img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .initiative-content {
+            padding: 2rem;
+        }
+
+        .initiative-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .initiative-content p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .initiative-content .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.8rem;
+        }
+
+        .initiative-content .btn:hover {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .cta {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-attachment: fixed; /* Parallax effect */
+            color: var(--white);
+            text-align: center;
+            padding: 8rem 0;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta .btn {
+            background-color: var(--white);
+            color: var(--primary);
+            border-color: var(--white);
+            margin-top: 2rem;
+        }
+
+        .cta .btn:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        footer {
+            background-color: #111;
+            color: #999;
+            padding: 4rem 0 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links li a {
+            color: #999;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .about-img {
+                margin-bottom: 2rem;
+            }
+            .initiatives-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 2rem;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                padding: 1rem 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .initiatives-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="card">
-      <div class="logo">
-        <div class="mark pulse" aria-hidden="true">
-          <!-- simple leaf icon -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 20c5-1 8-6 9-11 1 0 5 6 5 11-5 0-9 0-14 0z" fill="white" opacity="0.95"/></svg>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-layer-group"></i>
+                <span>Urban Space</span>
+            </div>
+            <nav>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#studio">Studio</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div>
-          <h1>守护地球 • 环境保护</h1>
-          <div style="color:var(--muted);font-size:12px">小行动，大改变 — 从今天开始</div>
-        </div>
-      </div>
-
-      <nav>
-        <a href="#about">关于</a>
-        <a href="#tips">行动指南</a>
-        <a href="#resources">资源</a>
-        <a href="#contact" class="btn btn-outline">联系我们</a>
-      </nav>
     </header>
 
-    <section class="hero">
-      <div class="card hero-left fade-up delay-1">
-        <h2>为未来留一片绿 — 环境保护从每个人做起</h2>
-        <p class="lead">气候变化、污染和生物多样性丧失正在影响我们的生活。通过可持续的生活方式、社区行动和教育，我们可以减缓破坏、修复生态并创造更健康的地球。</p>
-
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#tips">立即采取行动</a>
-          <a class="btn btn-outline" href="#resources">学习更多</a>
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Defining the Skyline of Tomorrow</h1>
+            <p>We combine innovative engineering with aesthetic perfection to create spaces that inspire, endure, and transform communities.</p>
+            <a href="#projects" class="btn">View Our Portfolio</a>
         </div>
-
-        <div class="stats">
-          <div class="stat">
-            <h3>低碳生活</h3>
-            <p>减少个人碳排放，选择公共交通与低碳出行。</p>
-          </div>
-          <div class="stat">
-            <h3>零废弃</h3>
-            <p>减少一次性用品，实践垃圾分类与回收。</p>
-          </div>
-          <div class="stat">
-            <h3>植树造林</h3>
-            <p>参与植树与生态修复，恢复生物栖息地。</p>
-          </div>
-        </div>
-      </div>
-
-      <aside class="right-visual">
-        <div class="card visual-card fade-up delay-2" style="height:240px;">
-          <div class="bg" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="绿色森林和阳光"/>
-          </div>
-        </div>
-
-        <div class="card visual-card">
-          <div style="padding:12px">
-            <h4 style="margin:0 0 6px">加入本地行动</h4>
-            <p class="lead" style="margin:0;color:var(--muted);font-size:14px">从小区清洁、海滩捡垃圾到支持环保组织，每一步都重要。</p>
-          </div>
-        </div>
-      </aside>
     </section>
 
-    <main>
-      <section id="about" class="card section fade-up">
-        <h3>关于环境保护</h3>
-        <p class="lead">环境保护意指保护自然环境及其生态系统的完整性，减少污染、节约资源并促进人与自然的和谐共生。它涵盖：大气、水体、土壤、物种与生态系统修复、可持续能源等多个领域。</p>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
-          <div>
-            <h4>为什么重要？</h4>
-            <ul>
-              <li>保障人类的健康与食品安全；</li>
-              <li>维护生态服务（如授粉、净化空气与水）；</li>
-              <li>保护气候系统与生物多样性。</li>
-            </ul>
-          </div>
-          <div>
-            <h4>我们面临的挑战</h4>
-            <ul>
-              <li>温室气体排放与全球变暖；</li>
-              <li>塑料与化学污染；</li>
-              <li>森林砍伐与栖息地破坏。</li>
-            </ul>
-          </div>
+    <section id="studio">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Studio</h2>
+                <p>Architecture is not just about buildings; it's about how people experience space.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80" alt="Architectural Model">
+                </div>
+                <div class="about-text">
+                    <h3>Philosophy of Form</h3>
+                    <p>Urban Space was founded on the principle that good design should be accessible, sustainable, and timeless. We don't just follow trends; we set the standard for modern living.</p>
+                    <p>With over two decades of excellence, our firm has delivered iconic structures across 15 countries, ranging from high-rise commercial towers to bespoke private residences.</p>
+                    <p>Our multidisciplinary team of architects, designers, and urban planners works collaboratively to push the boundaries of what is physically and aesthetically possible.</p>
+                    <a href="#" class="btn" style="background-color: var(--primary); border: none;">Read Our Story</a>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <i class="fas fa-drafting-compass"></i>
+                    <h3 class="counter" data-target="450">0</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-award"></i>
+                    <h3 class="counter" data-target="32">0</h3>
+                    <p>Design Awards</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-city"></i>
+                    <h3 class="counter" data-target="15">0</h3>
+                    <p>Cities Reached</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-user-tie"></i>
+                    <h3 class="counter" data-target="85">0</h3>
+                    <p>Expert Architects</p>
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <aside class="card resources fade-up">
-        <h4>资源与链接</h4>
-        <ul>
-          <li>生态保护组织与志愿者平台</li>
-          <li>本地回收与垃圾分类指南</li>
-          <li>可持续生活的入门课程与手册</li>
-          <li>碳足迹计算工具</li>
-        </ul>
-
-        <h4 style="margin-top:12px">联系我们</h4>
-        <p style="color:var(--muted);font-size:13px">邮箱：hello@example.org<br/>社交：@earth_guard</p>
-      </aside>
-
-      <section id="tips" class="card section fade-up">
-        <h3>行动指南 — 简单可行的日常改变</h3>
-        <div class="tips" style="margin-top:12px">
-          <div class="tip">
-            <h4>减少一次性用品</h4>
-            <p>携带随身水杯、购物袋与餐具，减少塑料垃圾。</p>
-          </div>
-          <div class="tip">
-            <h4>节能减排</h4>
-            <p>使用节能灯、节约用电，并优先选择公共交通或骑行。</p>
-          </div>
-          <div class="tip">
-            <h4>负责任的饮食</h4>
-            <p>减少食物浪费，适当选择植物性饮食以减轻碳足迹。</p>
-          </div>
-          <div class="tip">
-            <h4>支持修复生态</h4>
-            <p>参与或捐助植树、湿地恢复与自然保护项目。</p>
-          </div>
+    <section class="initiatives" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Selected Works</h2>
+                <p>A curated selection of our most recent and significant developments.</p>
+            </div>
+            <div class="initiatives-grid">
+                <div class="initiative-card">
+                    <div class="initiative-img">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80" alt="Modern Residence">
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Residential Living</h3>
+                        <p>Luxury villas and smart homes designed for comfort, integrating nature with modern brutalist architecture.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-img">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Corporate Office">
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Corporate Headquarters</h3>
+                        <p>Designing the workspaces of the future, focusing on productivity, light flow, and energy efficiency.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-img">
+                        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&auto=format&fit=crop&w=2144&q=80" alt="Urban Planning">
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Urban Planning</h3>
+                        <p>Large-scale city developments that revitalize districts and create sustainable public infrastructures.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
-          <a class="btn btn-primary" href="#contact">成为志愿者</a>
-          <a class="btn btn-outline" href="#resources">下载指南（PDF）</a>
+    <section class="cta" id="services">
+        <div class="container">
+            <h2>Vision to Reality</h2>
+            <p>Whether you are planning a commercial complex or a dream home, our team is ready to bring your vision to life with precision and passion.</p>
+            <a href="#contact" class="btn">Schedule a Consultation</a>
         </div>
-      </section>
+    </section>
 
-      <section id="contact" class="card section fade-up">
-        <h3>加入我们</h3>
-        <p class="lead">想要组织活动或与我们合作？给我们发邮件或在社交媒体上联系。</p>
-        <form onsubmit="event.preventDefault(); alert('感谢你的关注！请把表单信息代替为实际提交逻辑。');" style="display:grid;gap:8px;margin-top:12px">
-          <input aria-label="姓名" placeholder="姓名" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
-          <input aria-label="邮箱" placeholder="邮箱" type="email" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
-          <textarea aria-label="留言" placeholder="你可以简单描述想参与的活动或问题" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;min-height:100px"></textarea>
-          <div style="display:flex;gap:8px">
-            <button class="btn btn-primary" type="submit">发送</button>
-            <button class="btn btn-outline" type="reset">清除</button>
-          </div>
-        </form>
-      </section>
-
-    </main>
-
-    <footer>
-      <div>© <span id="year"></span> 守护地球 • 环境保护 — 小行动，大改变</div>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Urban Space</h3>
+                    <p>Redefining the landscape through bold design and sustainable engineering practices.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#studio">The Studio</a></li>
+                        <li><a href="#projects">Portfolio</a></li>
+                        <li><a href="#services">Capabilities</a></li>
+                        <li><a href="#contact">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Expertise</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Architecture</a></li>
+                        <li><a href="#">Interior Design</a></li>
+                        <li><a href="#">Landscape</a></li>
+                        <li><a href="#">Project Management</a></li>
+                        <li><a href="#">Renovation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get in Touch</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent)"></i> 101 Design District, London</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent)"></i> +44 20 7123 4567</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px; color: var(--accent)"></i> hello@urbanspace.co.uk</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Urban Space Architects. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // Simple progressive reveal for sections when they enter viewport
-    const observer = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('fade-up'); })
-    },{threshold:0.09});
-    document.querySelectorAll('.card').forEach(el=>observer.observe(el));
-  </script>
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+        // Counter Animation (Optimized)
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000; // Animation duration in ms
+                    const step = target / (duration / 16); // 60fps
+                    
+                    let current = 0;
+                    const updateCounter = () => {
+                        current += step;
+                        if(current < target) {
+                            counter.innerText = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                    observer.unobserve(counter); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    document.querySelector('nav ul').classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
